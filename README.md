@@ -1,6 +1,10 @@
 # Radiocassete 8 Bandas - Firmware ESP32
 
+![Interfaz Ecualizador](screenshots/ui_eq.png)
+
 Este es el código fuente del firmware para el controlador de audio basado en ESP32 y ADAU1701.
+
+![Estado del Sistema](screenshots/ui_status.png)
 
 ## Guía de Botones y Ajustes
 
