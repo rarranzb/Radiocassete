@@ -6,6 +6,16 @@ Este es el código fuente del firmware para el controlador de audio basado en ES
 
 ![Estado del Sistema](screenshots/ui_status.png)
 
+Project Status & Support
+
+This project has been developed with the assistance of Artificial Intelligence for logic and coding. While it is fully functional and stable for its intended use, please note the following:
+
+No Expert Support: I am not a DSP or SigmaStudio expert. I will not be able to provide deep technical support, resolve complex bugs, or answer low-level architectural questions.
+
+As-Is Basis: The repository is shared "as-is" as a reference, template, or inspiration for other "restomod" and vintage audio projects.
+
+Contributions: You are welcome to fork the project and improve it, but please do not expect active maintenance or troubleshooting from my side.
+
 ## Guía de Botones y Ajustes
 
 ### Botones Físicos
