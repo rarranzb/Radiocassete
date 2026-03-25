@@ -6,7 +6,15 @@ Este es el código fuente del firmware para el controlador de audio basado en ES
 
 ![Estado del Sistema](screenshots/ui_status.png)
 
-Project Status & Support
+## Instalación desde el navegador
+
+Puedes flashear el firmware directamente desde **Google Chrome** o **Microsoft Edge** sin necesidad de instalar ningún software:
+
+**[Instalar Firmware](https://rarranzb.github.io/Radiocassete/)**
+
+Solo necesitas conectar el ESP32 por USB y pulsar el botón de instalación.
+
+## Project Status & Support
 
 This project has been developed with the assistance of Artificial Intelligence for logic and coding. While it is fully functional and stable for its intended use, please note the following:
 

@@ -1,0 +1,15 @@
+{
+  "name": "Radiocassete 8 Bandas",
+  "version": "2.7.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        {
+          "path": "https://github.com/rarranzb/Radiocassete/releases/latest/download/firmware-merged.bin",
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

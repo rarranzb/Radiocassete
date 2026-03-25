@@ -1,0 +1,48 @@
+name: Build & Release Firmware
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: "esp32:esp32:esp32:UploadSpeed=921600,CPUFreq=240,FlashFreq=80,FlashMode=qio,FlashSize=4M,PartitionScheme=default,DebugLevel=none,PSRAM=disabled,LoopCore=1,EventsCore=1,EraseFlash=none,JTAGAdapter=default,ZigbeeMode=default"
+          platforms: |
+            - name: esp32:esp32
+              version: 3.3.7
+              source-url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          sketch-paths: "."
+          enable-warnings-report: false
+          cli-compile-flags: |
+            - --export-binaries
+
+      - name: Prepare release assets
+        run: |
+          cp build/esp32.esp32.esp32/*.bin .
+          # Create merged binary for web flasher (bootloader + partitions + app)
+          pip install esptool
+          python -m esptool --chip esp32 merge_bin \
+            -o firmware-merged.bin \
+            --flash_mode qio \
+            --flash_freq 80m \
+            --flash_size 4MB \
+            0x1000  Radiocassete_8_Bandas.ino.bootloader.bin \
+            0x8000  Radiocassete_8_Bandas.ino.partitions.bin \
+            0xe000  boot_app0.bin \
+            0x10000 Radiocassete_8_Bandas.ino.bin
+
+      - name: Upload assets to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Radiocassete_8_Bandas.ino.bin
+            Radiocassete_8_Bandas.ino.bootloader.bin
+            Radiocassete_8_Bandas.ino.partitions.bin
+            boot_app0.bin
+            firmware-merged.bin

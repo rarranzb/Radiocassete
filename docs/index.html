@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiocassete 8 Bandas - Web Installer</title>
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+  ></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+    h1 {
+      color: #00d4ff;
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 2rem;
+    }
+    .install-box {
+      background: #16213e;
+      border: 1px solid #0f3460;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .install-box p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
+    esp-web-install-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+    }
+    esp-web-install-button button {
+      background: #00d4ff;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    esp-web-install-button button:hover {
+      background: #00b8d9;
+    }
+    .steps {
+      background: #16213e;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
+    }
+    .steps h2 {
+      color: #00d4ff;
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    .steps ol {
+      padding-left: 1.2rem;
+    }
+    .steps li {
+      margin: 0.8rem 0;
+      line-height: 1.5;
+    }
+    .note {
+      background: #1a1a3e;
+      border-left: 3px solid #e94560;
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    a { color: #00d4ff; }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #555;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Radiocassete 8 Bandas</h1>
+  <p class="subtitle">Firmware ESP32 + ADAU1701 &mdash; Web Installer</p>
+
+  <div class="install-box">
+    <p>Conecta tu ESP32 por USB y pulsa el botón para instalar el firmware.</p>
+    <p>Requiere <strong>Google Chrome</strong> o <strong>Microsoft Edge</strong> en escritorio.</p>
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate">Instalar Firmware</button>
+      <span slot="unsupported">
+        Tu navegador no soporta Web Serial.<br>Usa Chrome o Edge en escritorio.
+      </span>
+      <span slot="not-allowed">
+        No se permite el acceso al puerto serie en este contexto.
+      </span>
+    </esp-web-install-button>
+  </div>
+
+  <div class="steps">
+    <h2>Instrucciones</h2>
+    <ol>
+      <li>Conecta el ESP32 a tu ordenador con un cable USB.</li>
+      <li>Pulsa <strong>"Instalar Firmware"</strong> y selecciona el puerto serie del ESP32.</li>
+      <li>Espera a que termine la instalación (~1 minuto).</li>
+      <li>El ESP32 se reiniciará automáticamente con el nuevo firmware.</li>
+      <li>Conéctate a la red WiFi del dispositivo y accede a <strong>radiocassete.local</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="note">
+    <strong>Nota:</strong> La primera vez puede ser necesario mantener pulsado el botón
+    <strong>BOOT</strong> del ESP32 mientras se inicia la conexión. Si tienes problemas,
+    asegúrate de tener instalados los
+    <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank">drivers CP210x</a>
+    o los
+    <a href="https://github.com/WCHSoftware/ch34x-driver" target="_blank">drivers CH340</a>
+    según tu placa.
+  </div>
+
+  <footer>
+    <a href="https://github.com/rarranzb/Radiocassete" target="_blank">Ver proyecto en GitHub</a>
+    <br><br>
+    Proyecto de <strong>robertocreaciones</strong>
+  </footer>
+</body>
+</html>
